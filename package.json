@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/healtrex/node-text-analyzer/issues"
   },
-  "homepage": "https://github.com/healtrex/node-text-analyzer#readme"
+  "homepage": "https://github.com/healtrex/node-text-analyzer#readme",
+  "dependencies": {
+    "sanctuary": "^2.0.1"
+  }
 }
