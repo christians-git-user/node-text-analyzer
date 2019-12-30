@@ -1,0 +1,19 @@
+{
+  "name": "node-text-analyzer",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/healtrex/node-text-analyzer.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/healtrex/node-text-analyzer/issues"
+  },
+  "homepage": "https://github.com/healtrex/node-text-analyzer#readme"
+}
