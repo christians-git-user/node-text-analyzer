@@ -1,18 +1,24 @@
 const {pipe, map} = require(`sanctuary`);
+const stopwords = require(`./stopwords.js`).english
 const {getBrownCorpus} = require(`./getTestData.js`)
 
-const remove = x => x.replace(``);
+// str -> str
+const toLowerCase = x => x.toLowerCase();
+
+// :: str -> str
+const replace = x => y => x.replace(y)
+
+// :: str -> str
+const remove = x => replace(x)(``);
 
 // :: str -> array
 const split = x => y => x.split(y);
 
 const tokenize = x => split(x)(` `);
 
-const toLowerCase = x => x.toLowerCase();
-
 const nlp = pipe([
+    toLowerCase,
     tokenize,
-    map(toLowerCase),
     console.log
 ])
 
