@@ -6,29 +6,25 @@ var WordPOS = require('wordpos'),
 
 // str -> str
 const toLowerCase = x => x.toLowerCase();
-
 // :: str -> str
 const replace = x => y => z => x.replace(y, z)
-
 // :: str -> str
 const remove = x => y => replace(x)(y)(``);
-
+// :: str -> str
 const removeLineBreaks = x => remove(x)(/(\r\n|\n|\r)/gm)
-
+// :: str -> str
 const removePunctuation = x => remove(x)(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g)
-
-// fix this
+// :: str -> boolean
 const isStopword = x => stopwords.includes(x);
-
+// :: [] -> []
 const removeStopwords = x => S.reject(isStopword)(x);
-
 // :: str -> array
 const split = x => y => x.split(y);
-
+// :: str -> array
 const tokenize = x => split(x)(` `);
-
+// :: [] -> []
 const stemAllTokens = x => S.map(stemmer)(x)
-
+// :: str -> object
 const getPos = x => wordpos.getPOS(x);
 
 const getCounts = x => x.reduce(function (acc, curr) {
@@ -39,19 +35,25 @@ const getCounts = x => x.reduce(function (acc, curr) {
     }
   
     return acc;
-  }, {});
+  }, {}
+);
 
-  const sort = x => x.sort()
-
+// :: str -> object
 const nlp = S.pipe([
+    // str -> str
     removeLineBreaks,
+    // str -> str
     removePunctuation,
+    // str -> str
     toLowerCase,
+    // str -> array
     tokenize,
+    // array -> array
     removeStopwords,
+    // array -> array
     stemAllTokens,
+    // array -> object
     getCounts,
-    // sort,
     console.log
 ]);
 
@@ -67,4 +69,3 @@ the figure inside the coral-colored boucle dress was stupefying. drop drop
 `
 
 nlp(test)
-// getPos(test).then(console.log)
