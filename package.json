@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/healtrex/node-text-analyzer#readme",
   "dependencies": {
-    "sanctuary": "^2.0.1"
+    "sanctuary": "^2.0.1",
+    "wordpos": "^1.2.0"
   }
 }
