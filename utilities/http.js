@@ -3,37 +3,52 @@ const { request } = require('http')
 const Future = require('fluture')
 const {env: flutureEnv} = require('fluture-sanctuary-types');
 
-const {create, env, curry2} = require('sanctuary');
+const {create, env, curry3} = require('sanctuary');
 // const {curry3}  = create({
 //     checkTypes: process.env.NODE_ENV !== 'production',
 //     env: env.concat(flutureEnv)
 // });
 
-const httpGetFuture = curry2((url, headers) => 
+const httpGetFuture = (host, path) => 
     Future(function httpGet(reject, resolve) {
-        return request.get(url, headers, (resp) => {
-            let data = '';
+        const options = {
+            method: `GET`,
+            hostname: host,
+            path: path
+        }
+
+        console.log(options)
+        
+        const req = request.request(JSON.stringify(options), (resp) => {
+            const chunks = [];
         
             // A chunk of data has been recieved.
             resp.on('data', (chunk) => {
-            data += chunk;
+                chunks.push(chunk);
             });
         
             // The whole response has been received. Print out the result.
             resp.on('end', () => {
-            console.log(data);
-            resolve(data)
+                const body = Buffer.concat(chunks)
+                resolve(body)
             });
+        })
+
+        console.log(req)
         
-        }).on("error", (err) => {
+        req.on("error", (err) => {
             console.log("Error: " + err.message);
+            reject(console.error(err.message))
         })
     })
-)
-   
+
+const getOptionsBrownCorpus = (host, path) => {
+    console.log(path)
+    return httpGetFuture(host, path)
+}
     
-httpGetFuture(`http://www.sls.hawaii.edu/bley-vroman/brown.txt`) 
-.fork(console.error, console.log)
+getOptionsBrownCorpus(`sls.hawaii.edu`, `/bley-vroman/brown.txt`)
+
 
 module.exports = {
     httpGetFuture
