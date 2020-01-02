@@ -1,8 +1,8 @@
 const S = require ('sanctuary');
 const stopwords = require(`./stopwords.js`).english
 const {stemmer} = require(`./stemmer.js`)
-var WordPOS = require('wordpos'),
-    wordpos = new WordPOS();
+// var WordPOS = require('wordpos'),
+//     wordpos = new WordPOS();
 
 // str -> str
 const toLowerCase = x => x.toLowerCase();
@@ -19,13 +19,18 @@ const isStopword = x => stopwords.includes(x);
 // :: [] -> []
 const removeStopwords = x => S.reject(isStopword)(x);
 // :: str -> array
-const split = x => y => x.split(y);
+// const split = x => y => x.split(y);
 // :: str -> array
-const tokenize = x => split(x)(` `);
+const tokenize = x => x.split(` `);
 // :: [] -> []
 const stemAllTokens = x => S.map(stemmer)(x)
 // :: str -> object
-const getPos = x => wordpos.getPOS(x);
+// const getPos = x => wordpos.getPOS(x);
+
+const stringify = x => {
+  console.log(x)
+  return x.toString()
+}
 
 const getCounts = x => x.reduce(function (acc, curr) {
     if (typeof acc[curr] == 'undefined') {
@@ -33,13 +38,13 @@ const getCounts = x => x.reduce(function (acc, curr) {
     } else {
       acc[curr] += 1;
     }
-  
     return acc;
   }, {}
 );
 
 // :: str -> object
 const nlp = S.pipe([
+    stringify,
     // str -> str
     removeLineBreaks,
     // str -> str
@@ -48,24 +53,14 @@ const nlp = S.pipe([
     toLowerCase,
     // str -> array
     tokenize,
-    // array -> array
+    // array -> arraysplit(x)
     removeStopwords,
     // array -> array
     stemAllTokens,
     // array -> object
-    getCounts,
-    console.log
+    getCounts
 ]);
 
-const test = `THE DOORS 
-of the ~D train slid shut, and as I dropped into a seat and, 
-exhaling, looked up across the aisle, the whole aviary in my head burst 
-into song. She was a living doll and no mistake- the blue-black bang, 
-the wide cheekbones, olive-flushed, that betrayed the Cherokee strain 
-in her Midwestern lineage, and the mouth whose only fault, in the 
-novelist's carping phrase, was that the lower lip was a trifle too 
-voluptuous. From what I was able to gauge in a swift, greedy glance, 
-the figure inside the coral-colored boucle dress was stupefying. drop drop
-`
-
-nlp(test)
+module.exports = {
+  nlp
+};
