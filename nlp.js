@@ -32,7 +32,7 @@ const nlp = x => {
   const split = x => y => x.split(y);
 
   // :: str -> array
-  const tokenize = x => x.split(` `);
+  const tokenize = x => split(x)(' ');
 
   // :: [] -> []
   const stemAllTokens = x => S.map(stemmer)(x)
