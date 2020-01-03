@@ -22,9 +22,27 @@ const nlp = x => {
   // :: str -> str
   const removePunctuation = x => remove(x)(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g)
 
+  // :: body.omit -> array
+  const getOmittedWords = x => {
+    const omittedWords = []
+    if (typeof x == 'undefined') {
+      return omittedWords;
+    } else {
+      return x;
+    }
+  };
+
+  const omitted = getOmittedWords(x.omit);
+
+  // :: str -> boolean
+  const isOmitted = x => omitted.includes(x)
+
+  // :: [] -> []
+  const removeOmitted = x => S.reject(isOmitted)(x);
+
   // :: str -> boolean
   const isStopword = x => stopwords.includes(x);
-
+  
   // :: [] -> []
   const removeEnglishStopwords = x => S.reject(isStopword)(x);
 
@@ -54,7 +72,7 @@ const nlp = x => {
   const cleanText = S.pipe([
     //     -> str
     stringify,
-    // str -> str
+    // str -> strconst inputText = requestBody.input;
     removeLineBreaks,
     // str -> str
     removePunctuation,
@@ -70,14 +88,24 @@ const nlp = x => {
       tokenize,
       // array -> array
       removeEnglishStopwords,
+      removeOmitted,
       // array -> array
       stemAllTokens,
       // array -> object
       getCounts
   ]);
 
-  return nlpPipeline(x)
+  return nlpPipeline(x.input)
 }
+
+const test = {
+  input: "test test test liberty",
+  omit: ["liberty",
+          "mutual"
+]
+}
+
+console.log(nlp(test))
 
 module.exports = {
   nlp
