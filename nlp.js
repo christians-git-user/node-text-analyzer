@@ -78,7 +78,7 @@ const nlp = x => {
     removePunctuation,
     // str -> str
     toLowerCase
-  ]))
+  ])
 
   // :: str -> object
   const nlpPipeline = S.pipe([
@@ -97,15 +97,6 @@ const nlp = x => {
 
   return nlpPipeline(x.input)
 }
-
-const test = {
-  input: "test test test liberty",
-  omit: ["liberty",
-          "mutual"
-]
-}
-
-console.log(nlp(test))
 
 module.exports = {
   nlp
