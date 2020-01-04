@@ -6,5 +6,4 @@ jspm_packages
 .serverless
 
 # Deployed files
-handler.js
 serverless.yml

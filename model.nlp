@@ -1,0 +1,472 @@
+{
+  "settings": {
+    "languages": [
+      "en"
+    ],
+    "tag": "nlp",
+    "threshold": 0.5,
+    "autoLoad": true,
+    "autoSave": true,
+    "modelFileName": "model.nlp"
+  },
+  "nluManager": {
+    "settings": {
+      "tag": "nlu-manager"
+    },
+    "locales": [
+      "en"
+    ],
+    "languageNames": {},
+    "domainManagers": {
+      "en": {
+        "settings": {
+          "locale": "en",
+          "tag": "domain-manager-en",
+          "nluByDomain": {
+            "default": {
+              "className": "NeuralNlu",
+              "settings": {}
+            }
+          },
+          "trainByDomain": false,
+          "useStemDict": true
+        },
+        "stemDict": {
+          "a,glitch,hit,i": {
+            "intent": "glitch",
+            "domain": "default"
+          },
+          "it,not,work": {
+            "intent": "glitch",
+            "domain": "default"
+          },
+          "broken,is,site": {
+            "intent": "glitch",
+            "domain": "default"
+          },
+          "frozen,is,it": {
+            "intent": "glitch",
+            "domain": "default"
+          },
+          "anymor,it,not,work": {
+            "intent": "glitch",
+            "domain": "default"
+          },
+          "cant,continu,froze,i,it": {
+            "intent": "glitch",
+            "domain": "default"
+          },
+          "a,glitch,there": {
+            "intent": "glitch",
+            "domain": "default"
+          },
+          "damag,water": {
+            "intent": "water",
+            "domain": "default"
+          },
+          "call,plumber,the": {
+            "intent": "water",
+            "domain": "default"
+          },
+          "a,leak,there": {
+            "intent": "water",
+            "domain": "default"
+          },
+          "is,leak,pipe": {
+            "intent": "water",
+            "domain": "default"
+          },
+          "burst,pipe": {
+            "intent": "water",
+            "domain": "default"
+          },
+          "a,damag,from,leak,moistur": {
+            "intent": "water",
+            "domain": "default"
+          },
+          "leak,water": {
+            "intent": "water",
+            "domain": "default"
+          }
+        },
+        "intentDict": {
+          "glitch": "default",
+          "water": "default"
+        },
+        "sentences": [
+          {
+            "domain": "default",
+            "utterance": "i hit a glitch",
+            "intent": "glitch"
+          },
+          {
+            "domain": "default",
+            "utterance": "its not working",
+            "intent": "glitch"
+          },
+          {
+            "domain": "default",
+            "utterance": "site is broken",
+            "intent": "glitch"
+          },
+          {
+            "domain": "default",
+            "utterance": "it is frozen",
+            "intent": "glitch"
+          },
+          {
+            "domain": "default",
+            "utterance": "its not working anymore",
+            "intent": "glitch"
+          },
+          {
+            "domain": "default",
+            "utterance": "i cant continue its froze",
+            "intent": "glitch"
+          },
+          {
+            "domain": "default",
+            "utterance": "theres a glitch",
+            "intent": "glitch"
+          },
+          {
+            "domain": "default",
+            "utterance": "water damage",
+            "intent": "water"
+          },
+          {
+            "domain": "default",
+            "utterance": "call the plumber",
+            "intent": "water"
+          },
+          {
+            "domain": "default",
+            "utterance": "theres a leak",
+            "intent": "water"
+          },
+          {
+            "domain": "default",
+            "utterance": "pipe is leaking",
+            "intent": "water"
+          },
+          {
+            "domain": "default",
+            "utterance": "pipe burst",
+            "intent": "water"
+          },
+          {
+            "domain": "default",
+            "utterance": "moisture damage from a leak",
+            "intent": "water"
+          },
+          {
+            "domain": "default",
+            "utterance": "water leak",
+            "intent": "water"
+          }
+        ],
+        "domains": {
+          "master_domain": {
+            "settings": {
+              "locale": "en",
+              "tag": "nlu-en",
+              "keepStopwords": true,
+              "nonefeatureValue": 1,
+              "nonedeltaMultiplier": 1.2,
+              "spellCheck": false,
+              "spellCheckDistance": 1,
+              "filterZeros": true,
+              "log": true
+            },
+            "features": {
+              "i": 1,
+              "hit": 1,
+              "a": 1,
+              "glitch": 1,
+              "it": 1,
+              "not": 1,
+              "work": 1,
+              "site": 1,
+              "is": 1,
+              "broken": 1,
+              "frozen": 1,
+              "anymor": 1,
+              "cant": 1,
+              "continu": 1,
+              "froze": 1,
+              "there": 1,
+              "water": 1,
+              "damag": 1,
+              "call": 1,
+              "the": 1,
+              "plumber": 1,
+              "leak": 1,
+              "pipe": 1,
+              "burst": 1,
+              "moistur": 1,
+              "from": 1
+            },
+            "intents": {
+              "glitch": 1,
+              "water": 1
+            },
+            "intentFeatures": {
+              "glitch": [
+                "i",
+                "hit",
+                "a",
+                "glitch",
+                "it",
+                "not",
+                "work",
+                "site",
+                "is",
+                "broken",
+                "frozen",
+                "anymor",
+                "cant",
+                "continu",
+                "froze",
+                "there"
+              ],
+              "water": [
+                "water",
+                "damag",
+                "call",
+                "the",
+                "plumber",
+                "there",
+                "a",
+                "leak",
+                "pipe",
+                "is",
+                "burst",
+                "moistur",
+                "from"
+              ]
+            },
+            "neuralNetwork": {
+              "features": [
+                "i",
+                "hit",
+                "a",
+                "glitch",
+                "it",
+                "not",
+                "work",
+                "site",
+                "is",
+                "broken",
+                "frozen",
+                "anymor",
+                "cant",
+                "continu",
+                "froze",
+                "there",
+                "water",
+                "damag",
+                "call",
+                "the",
+                "plumber",
+                "leak",
+                "pipe",
+                "burst",
+                "moistur",
+                "from",
+                "nonefeature"
+              ],
+              "intents": [
+                "glitch",
+                "water",
+                "None"
+              ],
+              "perceptrons": [
+                [
+                  1.535752296447754,
+                  0.354728102684021,
+                  1.914833903312683,
+                  6.502886772155762,
+                  5.20938777923584,
+                  2.5289390087127686,
+                  2.5289390087127686,
+                  3.3527438640594482,
+                  3.582933187484741,
+                  3.3527438640594482,
+                  1.4994285106658936,
+                  0.03670187294483185,
+                  1.1810239553451538,
+                  1.1810239553451538,
+                  1.1810239553451538,
+                  1.8377741575241089,
+                  -1.1352875232696533,
+                  -1.3319417238235474,
+                  -0.856641411781311,
+                  -0.856641411781311,
+                  -0.856641411781311,
+                  -5.938302040100098,
+                  -1.857774257659912,
+                  -0.5885366797447205,
+                  -0.2776680588722229,
+                  -0.2776680588722229,
+                  -2.207942247390747,
+                  2.2094940757262322
+                ],
+                [
+                  -1.083508849143982,
+                  -0.916723906993866,
+                  0.7097768187522888,
+                  -6.402699947357178,
+                  -1.8182052373886108,
+                  -0.7920979857444763,
+                  -0.7920979857444763,
+                  -1.2760368585586548,
+                  -1.3646315336227417,
+                  -1.2760368585586548,
+                  -0.8593220710754395,
+                  -0.18310531973838806,
+                  -0.16678500175476074,
+                  -0.16678500175476074,
+                  -0.16678500175476074,
+                  2.7029387950897217,
+                  3.929060459136963,
+                  5.14727258682251,
+                  3.0943164825439453,
+                  3.0943164825439453,
+                  3.0943164825439453,
+                  5.588552951812744,
+                  5.017175674438477,
+                  4.2464470863342285,
+                  -1.0764373540878296,
+                  -1.0764373540878296,
+                  -3.2174599170684814,
+                  3.2151425347956066
+                ],
+                [
+                  -0.4701501727104187,
+                  -0.23625622689723969,
+                  -0.8847119808197021,
+                  -0.7049030065536499,
+                  -1.0449432134628296,
+                  -0.5857110023498535,
+                  -0.5857110023498535,
+                  -0.6330888867378235,
+                  -0.9499011635780334,
+                  -0.6330888867378235,
+                  -0.22533796727657318,
+                  -0.10135716199874878,
+                  -0.23389391601085663,
+                  -0.23389391601085663,
+                  -0.23389391601085663,
+                  -0.6263202428817749,
+                  -1.3791801929473877,
+                  -0.8378034830093384,
+                  -0.7385914921760559,
+                  -0.7385914921760559,
+                  -0.7385914921760559,
+                  -0.8347945809364319,
+                  -1.1526902914047241,
+                  -1.0612159967422485,
+                  -0.022135287523269653,
+                  -0.022135287523269653,
+                  10.267082214355469,
+                  2.2173330562779383
+                ]
+              ],
+              "perceptronSettings": {
+                "locale": "en",
+                "tag": "nlu-en",
+                "keepStopwords": true,
+                "nonefeatureValue": 1,
+                "nonedeltaMultiplier": 1.2,
+                "spellCheck": false,
+                "spellCheckDistance": 1,
+                "filterZeros": true,
+                "log": true
+              }
+            }
+          }
+        }
+      }
+    },
+    "intentDomains": {},
+    "extraSentences": [
+      [
+        "en",
+        "i hit a glitch"
+      ],
+      [
+        "en",
+        "its not working"
+      ],
+      [
+        "en",
+        "site is broken"
+      ],
+      [
+        "en",
+        "it is frozen"
+      ],
+      [
+        "en",
+        "its not working anymore"
+      ],
+      [
+        "en",
+        "i cant continue its froze"
+      ],
+      [
+        "en",
+        "theres a glitch"
+      ],
+      [
+        "en",
+        "water damage"
+      ],
+      [
+        "en",
+        "call the plumber"
+      ],
+      [
+        "en",
+        "theres a leak"
+      ],
+      [
+        "en",
+        "pipe is leaking"
+      ],
+      [
+        "en",
+        "pipe burst"
+      ],
+      [
+        "en",
+        "moisture damage from a leak"
+      ],
+      [
+        "en",
+        "water leak"
+      ]
+    ]
+  },
+  "ner": {
+    "settings": {
+      "tag": "ner",
+      "entityPreffix": "%",
+      "entitySuffix": "%"
+    },
+    "rules": {}
+  },
+  "nlgManager": {
+    "settings": {
+      "tag": "nlg-manager"
+    },
+    "responses": {}
+  },
+  "actionManager": {
+    "settings": {
+      "tag": "action-manager"
+    },
+    "actions": {}
+  },
+  "slotManager": {}
+}

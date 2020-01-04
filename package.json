@@ -17,8 +17,13 @@
   },
   "homepage": "https://github.com/healtrex/node-text-analyzer#readme",
   "dependencies": {
+    "@types/bluebird": "^3.5.29",
+    "@types/node": "^13.1.4",
+    "csv-parse": "^4.8.3",
+    "node-nlp": "^4.0.0-rc.16",
     "sanctuary": "^2.0.1",
-    "wordpos": "^1.2.0"
+    "string-natural-compare": "^3.0.0",
+    "typescript": "^3.7.4"
   },
   "devDependencies": {
     "chai": "^4.2.0",

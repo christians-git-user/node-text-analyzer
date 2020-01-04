@@ -78,7 +78,7 @@ const nlp = x => {
     removePunctuation,
     // str -> str
     toLowerCase
-  ])
+  ]))
 
   // :: str -> object
   const nlpPipeline = S.pipe([
