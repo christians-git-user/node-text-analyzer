@@ -1,5 +1,5 @@
 const { NlpManager } = require('node-nlp');
-const {csvStream} = require('./csv.js')
+const {csvStream} = require('../utilities/csv.js/index.js')
  
 const manager = new NlpManager({ languages: ['en'] });
 
