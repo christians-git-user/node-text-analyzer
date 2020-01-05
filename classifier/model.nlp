@@ -19,7 +19,7 @@
     "languageNames": {},
     "domainManagers": {
       "en": {
-        "settings": {trainClassifierFromCsvData
+        "settings": {
           "locale": "en",
           "tag": "domain-manager-en",
           "nluByDomain": {
