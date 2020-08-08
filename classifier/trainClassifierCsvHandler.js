@@ -2,11 +2,12 @@ const {nlp} = require('../nlp.js');
 const {trainClassifierFromCsvData} = require('./trainClassifier.js')
 var AWS = require('aws-sdk');
 var util = require('util');
+const fs = require('fs')
 
 // get reference to S3 client
 var s3 = new AWS.S3();
 
-exports.handler = function(event, context, callback) {
+exports.handler = async event => {
     // Read options from the event.
     console.log("Reading options from event:\n", util.inspect(event, {depth: 5}));
     var srcBucket = event.Records[0].s3.bucket.name;
@@ -20,18 +21,23 @@ exports.handler = function(event, context, callback) {
       Key: srcKey
     }
 
-    console.log(JSON.stringify(s3params));
+    console.log(JSON.stringify(s3Params));
 
-    async function download () {
-      s3.getObject(s3Params)
-    } 
+    const download = s3Params => {
+        return s3.getObject(s3Params, (error, data) => {
+          console.log(data.Body)
+          const tempPath = `/tmp/${s3Params['Key']}`;
+          fs.writeFile(tempPath, data.Body, () => {
+            console.log('loading csv into classifier trainer...')
+            trainClassifierFromCsvData(tempPath)
+          })
+        })
+      } 
 
-    await download().then(x => console.log(x))
-
-    await download().then(x => trainClassifierFromCsvData(x, nlp))
+    return download(s3Params)
 
     // // Download the image from S3, transform, and upload to a different S3 bucket.
-    // async.waterfall([
+    // async.waterfall([};
     //     function download(next) {
     //         // Download the image from S3 into a buffer.
     //         s3.getObject({
@@ -49,7 +55,7 @@ exports.handler = function(event, context, callback) {
     //                 MAX_WIDTH / size.width,
     //                 MAX_HEIGHT / size.height
     //             );
-    //             var width  = scalingFactor * size.width;
+    //             var width  = scalingFactor * size};.width;
     //             var height = scalingFactor * size.height;
 
     //             // Transform the image buffer in memory.
